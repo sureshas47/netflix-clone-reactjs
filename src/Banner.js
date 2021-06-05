@@ -15,6 +15,7 @@ function Banner() {
       setmovies(
           request.data.results
         [
+          // change random movies in every refresh
           Math.floor(Math.random() * request.data.results.length - 1)
         ]
       );
@@ -41,21 +42,14 @@ function Banner() {
       }}
     >
       <div className="banner_contains">
-        <h1 className="banner_title">Movie Name</h1>
+        <h1 className="banner_title">{movies?.name || movies?.title || movies?.original_name}</h1>
         <div className="banner_buttons">
           <button className="banner_button">Play</button>
           <button className="banner_button">My List</button>
         </div>
         <h1 className="banner_desc">
           {truncate(
-            `this is testthis is test
-              this is testthis is testthis is testthis is testthis is test
-              this is testthis is testthis is testthis is testthis is testthis 
-              is test this is testthis is testthis is testthis is testthis is test
-              this is testthis is testthis is testthis is testthis is testthis 
-              ithis is testthis is testthis is testthis is testthis is tests test
-              this is testthis is testthis is testthis is testthis is testthis is test`,
-
+            `${movies?.overview}`,
             150
           )}
         </h1>
